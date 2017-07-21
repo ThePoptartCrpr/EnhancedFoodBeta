@@ -1,0 +1,24 @@
+tile.salt_ore.name=Salt Ore
+
+tile.corn_crop.name=Corn Crop
+
+item.salt.name=Salt
+item.filleted_tuna.name=Filleted Tuna
+item.tuna_fish.name=Raw Tuna
+
+item.corn.name=Corn
+
+item.corn_seeds.name=Corn Seeds
+
+container.oven=Oven
+
+itemGroup.effood=Enhanced Food - Food
+itemGroup.efcrops=Enhanced Food - Crops
+itemGroup.efingredient=Enhanced Food - Ingredients
+itemGroup.efmachine=Enhanced Food - Utilities
+itemGroup.efores=Enhanced Food - Ores
+
+achievement.crop=The Beginning
+achievement.crop.desc=Break grass until you find a seed from Enhanced Food
+achievement.harvest=Harvesting Success
+achievement.harvest.desc=Harvest a crop from Enhanced Food
