@@ -2,9 +2,12 @@ tile.salt_ore.name=Salt Ore
 
 tile.corn_crop.name=Corn Crop
 
+tile.oven.name=Oven
+
 item.salt.name=Salt
 item.filleted_tuna.name=Filleted Tuna
 item.tuna_fish.name=Raw Tuna
+item.dough_bread.name=Bread Dough
 
 item.corn.name=Corn
 

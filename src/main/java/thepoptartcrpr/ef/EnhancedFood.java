@@ -21,6 +21,7 @@ import thepoptartcrpr.ef.handlers.OvenRecipeHandler;
 import thepoptartcrpr.ef.handlers.RecipeHandler;
 import thepoptartcrpr.ef.handlers.RecipeRemover;
 import thepoptartcrpr.ef.init.EFBlocks;
+import thepoptartcrpr.ef.init.EFCapabilities;
 import thepoptartcrpr.ef.init.EFItems;
 import thepoptartcrpr.ef.proxy.CommonProxy;
 
@@ -48,10 +49,12 @@ public class EnhancedFood {
 		EFBlocks.register();
 		EFItems.register();
 		
+		proxy.preInit();
 		proxy.registerRenders();
 		proxy.registerTileEntities();
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(EnhancedFood.instance, new GuiHandler());
+		EFCapabilities.registerCapabilities();
 		
 		AchievementHandler.registerAchievements();
 		
@@ -61,6 +64,8 @@ public class EnhancedFood {
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		proxy.init();
+		
 		eventHandler.registerEvents();
 		
 		RecipeHandler.registerCraftingRecipes();

@@ -29,7 +29,7 @@ public class ContainerOven extends Container {
 		this.handler = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 		
 		this.addSlotToContainer(new SlotOvenInput(handler, 0, 44, 35));
-		this.addSlotToContainer(new SlotOvenFuel(handler, 1, 22, 55));
+		this.addSlotToContainer(new SlotOvenFuel(handler, 1, 8, 45));
 		this.addSlotToContainer(new SlotOvenOutput(handler, 2, 116, 35));
 		
 		int xPos = 8;
@@ -45,7 +45,7 @@ public class ContainerOven extends Container {
 			this.addSlotToContainer(new Slot(playerInv, x, xPos + x * 18, yPos + 58));
 		}
 		
-		Utils.getConsole().info("handler.getSlots() " + handler.getSlots());
+		// Utils.getConsole().info("handler.getSlots() " + handler.getSlots());
 	}
 	
 	@Override

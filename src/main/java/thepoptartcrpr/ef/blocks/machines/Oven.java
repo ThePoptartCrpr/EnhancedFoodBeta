@@ -2,11 +2,16 @@ package thepoptartcrpr.ef.blocks.machines;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityMinecart.Type;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
@@ -27,14 +32,17 @@ import thepoptartcrpr.ef.init.EFBlocks;
 import thepoptartcrpr.ef.tileentity.TileEntityOven;
 import thepoptartcrpr.ef.utils.Utils;
 
-public class Oven extends Block implements ITileEntityProvider {
+public class Oven extends BlockMachine implements ITileEntityProvider {
 	
 	public static final PropertyDirection FACING = PropertyDirection.create("facing");
+	public static final PropertyBool ACTIVE = PropertyBool.create("active");
+	private static final EnumFacing[] VALID_FACING = { EnumFacing.NORTH, EnumFacing.EAST, EnumFacing.SOUTH, EnumFacing.WEST };
 	
 	public Oven(String unlocalizedName) {
-		super(Material.IRON);
-		this.setUnlocalizedName(unlocalizedName);
-		this.setRegistryName(new ResourceLocation(Variables.MODID, unlocalizedName));
+		super(unlocalizedName);
+		// this.setUnlocalizedName(unlocalizedName);
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(ACTIVE, Boolean.valueOf(false)));
+		// this.setRegistryName(new ResourceLocation(Variables.MODID, unlocalizedName));
 		// this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}
 	
@@ -50,23 +58,41 @@ public class Oven extends Block implements ITileEntityProvider {
 		// return Utils.calculateRedstone(handler);
 	// }
 	
-	// @Override
-	// public int getMetaFromState(IBlockState state) {
-		// EnumFacing facing = (EnumFacing) state.getValue(FACING);
-		// int meta = EnumFacing.values().length + facing.ordinal();
-		// return meta;
-	// }
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		EnumFacing facing = (EnumFacing) state.getValue(FACING);
+		int meta = EnumFacing.values().length + facing.ordinal();
+		return meta;
+	}
+	
+	@Override
+	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer) {
+		// Utils.log("Block placed");
+		// Utils.getConsole().info(BlockPistonBase.getFacingFromEntity(pos, placer));
+		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()).withProperty(ACTIVE, Boolean.valueOf(false));
+	}
+	
+	@Override
+	public EnumFacing[] getValidRotations(World world, BlockPos pos) {
+		return VALID_FACING;
+	}
 	
 	// @Override
-	// public IBlockState getStateFromMeta(int meta) {
-		// EnumFacing facing = EnumFacing.values()[meta % EnumFacing.values().length];
-		// return this.getDefaultState().withProperty(FACING, facing);
+	// public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+		// 	float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
 	// }
 	
 	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		EnumFacing facing = EnumFacing.values()[meta % EnumFacing.values().length];
+		return this.getDefaultState().withProperty(FACING, facing);
+	}
+	
+	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		// return super.createTileEntity(worldIn, getStateFromMeta(meta));
-		return new TileEntityOven();
+		return super.createTileEntity(worldIn, getStateFromMeta(meta));
+		// return new TileEntityOven();
 	}
 	
 	@Override
@@ -80,7 +106,7 @@ public class Oven extends Block implements ITileEntityProvider {
 		IItemHandler handler = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 		for(int slot = 0; slot < handler.getSlots(); slot++) {
 			ItemStack stack = handler.getStackInSlot(slot);
-			InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+			world.spawnEntityInWorld(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack));
 		}
 		super.breakBlock(world, pos, state);
 	}
@@ -95,16 +121,23 @@ public class Oven extends Block implements ITileEntityProvider {
 		// return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
 	}
 	
-	public static void setState(boolean active, World worldIn, BlockPos pos) {
+	public static void setState(EnumFacing facing, boolean active, World worldIn, BlockPos pos) {
 		IBlockState iblockstate = worldIn.getBlockState(pos);
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 		
-		worldIn.setBlockState(pos, EFBlocks.oven.getDefaultState());
+		// EnumFacing currentFacing = getStateFromMeta(5);
+		
+		worldIn.setBlockState(pos, EFBlocks.oven.getDefaultState().withProperty(FACING, facing).withProperty(ACTIVE, active));
 		
 		if (tileentity != null) {
 			tileentity.validate();
 			worldIn.setTileEntity(pos, tileentity);
 		}
+	}
+	
+	@Override
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, new IProperty[] {FACING,ACTIVE});
 	}
 
 }

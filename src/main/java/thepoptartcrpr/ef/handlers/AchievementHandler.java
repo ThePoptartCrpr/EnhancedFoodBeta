@@ -19,6 +19,7 @@ public class AchievementHandler {
 	public static Achievement achievementCrop = createAchievement("crop", 0, 0, EFItems.cornSeeds);
 	public static Achievement achievementHarvest = createAchievementWithParent("harvest", 0, 2, EFItems.corn, achievementCrop);
 	// public static Achievement achievementHarvest = createAchievement("harvest", 0, 2, EFItems.corn);
+	public static Achievement achievementCook = createAchievementWithParent("cook", 2, 4, EFItems.breadDough, achievementHarvest);
 	
 	public static void registerAchievements() {
 		Achievement[] achievementArray = new Achievement[achievements.size()];

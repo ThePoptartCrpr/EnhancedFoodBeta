@@ -36,43 +36,43 @@ public class OvenRecipeHandler {
 		return stack2.getItem() == stack1.getItem() && (stack2.getMetadata() == 32767 || stack2.getMetadata() == stack1.getMetadata());
 	}
 
-	public void addOvenRecipe(Item input, Item output) {
+	public static void addOvenRecipe(Item input, Item output) {
 		ItemStack inputStack = new ItemStack(input);
 		ItemStack outputStack = new ItemStack(output);
 		if (getOvenResult(inputStack) != null) {
 			Utils.getConsole().info("Conflicting recipes, ignoring recipe for " + input);
 		} else {
-			this.ovenList.put(inputStack, outputStack);
+			ovenList.put(inputStack, outputStack);
 		}
 	}
 	
-	public void addOvenRecipe(Block input, Item output) {
+	public static void addOvenRecipe(Block input, Item output) {
 		Item inputBlock = Item.getItemFromBlock(input);
 		ItemStack inputStack = new ItemStack(inputBlock);
 		ItemStack outputStack = new ItemStack(output);
 		if (getOvenResult(inputStack) != null) {
 			Utils.getConsole().info("Conflicting recipes, ignoring recipe for " + input);
 		} else {
-			this.ovenList.put(inputStack, outputStack);
+			ovenList.put(inputStack, outputStack);
 		}
 	}
 	
-	public void addOvenRecipe(Item input, ItemStack output) {
+	public static void addOvenRecipe(Item input, ItemStack output) {
 		ItemStack inputStack = new ItemStack(input);
 		if (getOvenResult(inputStack) != null) {
 			Utils.getConsole().info("Conflicting recipes, ignoring recipe for " + input);
 		} else {
-			this.ovenList.put(inputStack, output);
+			ovenList.put(inputStack, output);
 		}
 	}
 	
-	public void addOvenRecipe(Block input, ItemStack output) {
+	public static void addOvenRecipe(Block input, ItemStack output) {
 		Item inputBlock = Item.getItemFromBlock(input);
 		ItemStack inputStack = new ItemStack(inputBlock);
 		if (getOvenResult(inputStack) != null) {
 			Utils.getConsole().info("Conflicting recipes, ignoring recipe for " + input);
 		} else {
-			this.ovenList.put(inputStack, output);
+			ovenList.put(inputStack, output);
 		}
 	}
 	

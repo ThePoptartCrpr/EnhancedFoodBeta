@@ -6,7 +6,7 @@
 		"south":"#side",
 		"east":"#side",
 		"west":"#side",
-		"up":"#alt",
-		"down":"#alt"
+		"up":"#top",
+		"down":"#side"
 	}
 }

@@ -20,6 +20,11 @@ public class Utils {
 		return console;
 	}
 	
+	public static Logger log(String string) {
+		getConsole().info(string);
+		return null;
+	}
+	
 	// public static int calculateRedstone(ItemStackHandler handler) {
 		// int i = 0;
 		// float f = 0.0F;

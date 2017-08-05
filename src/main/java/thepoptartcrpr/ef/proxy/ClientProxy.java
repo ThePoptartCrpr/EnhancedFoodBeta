@@ -9,6 +9,16 @@ import thepoptartcrpr.ef.init.EFItems;
 public class ClientProxy extends CommonProxy {
 	
 	@Override
+	public void preInit() {
+		super.preInit();
+	}
+	
+	@Override
+	public void init() {
+		super.init();
+	}
+	
+	@Override
 	public void registerRenders() {
 		EFItems.registerRenders();
 		EFBlocks.registerRenders();

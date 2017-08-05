@@ -13,7 +13,7 @@ public class RecipeHandler {
 	}
 	
 	public static void registerSmeltingRecipes() {
-		GameRegistry.addSmelting(EFItems.breadDough, new ItemStack(Items.BREAD), 0.3f);
+		// GameRegistry.addSmelting(EFItems.breadDough, new ItemStack(Items.BREAD), 0.3f);
 	}
 	
 	private static void registerToolRecipe(Item ingot, Item pickaxe, Item axe, Item shovel, Item hoe, Item sword) {

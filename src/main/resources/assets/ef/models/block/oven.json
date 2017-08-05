@@ -3,6 +3,6 @@
 	"textures":{
 		"side":"ef:blocks/oven_side",
 		"front":"ef:blocks/oven_front",
-		"alt":"ef:blocks/machine_basic"
+		"top":"ef:blocks/oven_top"
 	}
 }
