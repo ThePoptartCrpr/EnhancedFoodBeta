@@ -1,15 +1,26 @@
 package thepoptartcrpr.ef.handlers;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 import thepoptartcrpr.ef.init.EFItems;
 
 public class RecipeHandler {
 	
 	public static void registerCraftingRecipes() {
-		GameRegistry.addShapelessRecipe(new ItemStack(EFItems.filletedTuna, 1), new Object[]{EFItems.fishTuna});
+		// Shapeless
+		GameRegistry.addShapelessRecipe(new ItemStack(EFItems.filletedTuna, 1), new Object[] { EFItems.fishTuna });
+		// GameRegistry.addShapelessRecipe(new ItemStack(Items.APPLE, 1), new Object[] { new ItemStack(EFItems.saw, 1, OreDictionary.WILDCARD_VALUE), EFItems.salt });
+		GameRegistry.addShapelessRecipe(new ItemStack(EFItems.cutWood, 3), new Object[] { new ItemStack(EFItems.saw, 1, OreDictionary.WILDCARD_VALUE), Blocks.PLANKS });
+		
+		// Shaped
+		GameRegistry.addRecipe(new ItemStack(EFItems.sawHandle), new Object[] { " SS", "S S", " S ", 'S', Items.STICK });
+		GameRegistry.addRecipe(new ItemStack(EFItems.sawHead), new Object[] { "III", "  I", 'I', Items.IRON_INGOT });
+		GameRegistry.addRecipe(new ItemStack(EFItems.saw), new Object[] { "AB", 'A', EFItems.sawHead, 'B', EFItems.sawHandle });
+		GameRegistry.addRecipe(new ItemStack(EFItems.cuttingBoard), new Object[] { "CCC", 'C', EFItems.cutWood });
 	}
 	
 	public static void registerSmeltingRecipes() {

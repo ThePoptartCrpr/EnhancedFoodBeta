@@ -5,6 +5,7 @@ import thepoptartcrpr.ef.EnhancedFood;
 import thepoptartcrpr.ef.gui.GuiHandler;
 import thepoptartcrpr.ef.init.EFBlocks;
 import thepoptartcrpr.ef.init.EFItems;
+import thepoptartcrpr.ef.init.EFTools;
 
 public class ClientProxy extends CommonProxy {
 	
@@ -22,6 +23,7 @@ public class ClientProxy extends CommonProxy {
 	public void registerRenders() {
 		EFItems.registerRenders();
 		EFBlocks.registerRenders();
+		EFTools.registerRenders();
 	}
 
 }

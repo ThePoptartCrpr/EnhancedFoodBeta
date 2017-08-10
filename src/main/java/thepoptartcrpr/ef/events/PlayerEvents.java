@@ -35,15 +35,15 @@ public class PlayerEvents {
 	
 	@SubscribeEvent
 	public void onPlayerJoinEvent(PlayerLoggedInEvent event) {
-		Utils.getConsole().info("Connected");
+		// Utils.getConsole().info("Connected");
 	}
 	
 	@SubscribeEvent
 	public void onPlayerUseItemEvent(ItemCraftedEvent event) {
 		Item item = event.crafting.getItem();
-		Utils.getConsole().info(event.crafting.getItem());
+		// Utils.getConsole().info(event.crafting.getItem());
 		if (item == EFItems.filletedTuna) {
-			Utils.getConsole().info("filleted tuna");
+			// Utils.getConsole().info("filleted tuna");
 		}
 	}
 

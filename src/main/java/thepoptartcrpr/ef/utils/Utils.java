@@ -12,6 +12,7 @@ import thepoptartcrpr.ef.Variables;
 public class Utils {
 	
 	private static Logger console;
+	private static Lang lang;
 	
 	public static Logger getConsole() {
 		if(console == null) {
@@ -23,6 +24,13 @@ public class Utils {
 	public static Logger log(String string) {
 		getConsole().info(string);
 		return null;
+	}
+	
+	public static Lang getLang() {
+		if (lang == null) {
+			lang = new Lang(Variables.MODID);
+		}
+		return lang;
 	}
 	
 	// public static int calculateRedstone(ItemStackHandler handler) {

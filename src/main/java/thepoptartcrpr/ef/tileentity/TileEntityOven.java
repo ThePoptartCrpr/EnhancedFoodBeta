@@ -28,7 +28,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import thepoptartcrpr.ef.blocks.machines.Oven;
+import thepoptartcrpr.ef.blocks.machines.BlockOven;
 import thepoptartcrpr.ef.capabilities.Worker;
 import thepoptartcrpr.ef.handlers.AchievementHandler;
 import thepoptartcrpr.ef.handlers.OvenRecipeHandler;
@@ -50,12 +50,6 @@ public class TileEntityOven extends TileEntity implements ITickable, ICapability
 	
 	
 	public TileEntityOven() {
-		this.worker = new Worker(10, () -> {
-			// 
-		}, () -> {
-			// 
-		});
-		// this.cooldown = 0;
 		this.handler = new ItemStackHandler(3);
 	}
 	
@@ -169,13 +163,13 @@ public class TileEntityOven extends TileEntity implements ITickable, ICapability
 			
 			// Utils.getConsole().info(ovenItemStacks);
 			
-			if (this.worldObj.isBlockPowered(pos)) {
+			// if (this.worldObj.isBlockPowered(pos)) {
 				// Utils.getConsole().info("Powered");
-			}
+			// }
 			IBlockState currentState = this.worldObj.getBlockState(pos);
 			// Oven.setState(this.isBurning(), worldObj, pos);
-			EnumFacing facing = (EnumFacing) currentState.getValue(Oven.FACING);
-			Oven.setState(facing, this.isBurning(), worldObj, pos);
+			EnumFacing facing = (EnumFacing) currentState.getValue(BlockOven.FACING);
+			BlockOven.setState(facing, this.isBurning(), worldObj, pos);
 		}
 		
 		if (flag1) {

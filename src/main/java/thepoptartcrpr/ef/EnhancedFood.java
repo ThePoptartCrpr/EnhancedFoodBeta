@@ -14,6 +14,8 @@ import thepoptartcrpr.ef.creativetabs.TabEFCrops;
 import thepoptartcrpr.ef.creativetabs.TabEFIngredient;
 import thepoptartcrpr.ef.creativetabs.TabEFMachines;
 import thepoptartcrpr.ef.creativetabs.TabEFOres;
+import thepoptartcrpr.ef.creativetabs.TabEFParts;
+import thepoptartcrpr.ef.creativetabs.TabEFTools;
 import thepoptartcrpr.ef.gui.GuiHandler;
 import thepoptartcrpr.ef.handlers.AchievementHandler;
 import thepoptartcrpr.ef.handlers.GrassHandler;
@@ -23,6 +25,7 @@ import thepoptartcrpr.ef.handlers.RecipeRemover;
 import thepoptartcrpr.ef.init.EFBlocks;
 import thepoptartcrpr.ef.init.EFCapabilities;
 import thepoptartcrpr.ef.init.EFItems;
+import thepoptartcrpr.ef.init.EFTools;
 import thepoptartcrpr.ef.proxy.CommonProxy;
 
 @Mod(modid = Variables.MODID, name = Variables.NAME, version = Variables.VERSION)
@@ -32,6 +35,8 @@ public class EnhancedFood {
 	public static final CreativeTabs ores = new TabEFOres();
 	public static final CreativeTabs crops = new TabEFCrops();
 	public static final CreativeTabs machines = new TabEFMachines();
+	public static final CreativeTabs tools = new TabEFTools();
+	public static final CreativeTabs parts = new TabEFParts();
 	
 	thepoptartcrpr.ef.handlers.EventHandler eventHandler = new thepoptartcrpr.ef.handlers.EventHandler();
 	
@@ -45,9 +50,11 @@ public class EnhancedFood {
 	public void preInit(FMLPreInitializationEvent event) {
 		EFBlocks.init();
 		EFItems.init();
+		EFTools.init();
 		
 		EFBlocks.register();
 		EFItems.register();
+		EFTools.register();
 		
 		proxy.preInit();
 		proxy.registerRenders();

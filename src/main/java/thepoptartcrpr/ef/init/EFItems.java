@@ -4,14 +4,17 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import thepoptartcrpr.ef.EnhancedFood;
 import thepoptartcrpr.ef.Variables;
 import thepoptartcrpr.ef.items.EFFood;
 import thepoptartcrpr.ef.items.EFItem;
+import thepoptartcrpr.ef.items.tools.EFGenericTool;
 
 public class EFItems {
 	
@@ -29,6 +32,17 @@ public class EFItems {
 	// Fish
 	public static Item fishTuna;
 	
+	// Tools
+	public static Item saw;
+	public static Item cuttingBoard;
+	public static Item mixingBowl;
+	
+	// Parts
+	public static Item sawHead;
+	public static Item sawHandle;
+	public static Item cutWood;
+	
+	
 	public static void init() {
 		// Ingredients
 		salt = new EFItem("salt", "salt");
@@ -43,6 +57,17 @@ public class EFItems {
 		
 		// Fish
 		fishTuna = new EFItem("tuna_fish", "tuna_fish");
+		
+		// Tools
+		saw = new EFGenericTool("saw", "saw");
+		cuttingBoard = new EFGenericTool("cutting_board", "cutting_board");
+		mixingBowl = new EFItem("mixing_bowl", "mixing_bowl");
+		
+		// Parts
+		sawHead = new EFItem("saw_head", "saw_head");
+		sawHandle = new EFItem("saw_handle", "saw_handle");
+		cutWood = new EFItem("cut_wood", "cut_wood");
+		
 	}
 	
 	public static void register() {
@@ -59,6 +84,17 @@ public class EFItems {
 		
 		// Fish
 		registerItem(fishTuna, EnhancedFood.ingredients);
+		
+		// Tools
+		registerItem(saw, EnhancedFood.tools);
+		registerItem(cuttingBoard, EnhancedFood.tools);
+		registerItem(mixingBowl, EnhancedFood.tools);
+		
+		// Parts
+		registerItem(sawHead, EnhancedFood.parts);
+		registerItem(sawHandle, EnhancedFood.parts);
+		registerItem(cutWood, EnhancedFood.parts);
+		
 	}
 	
 	public static void registerRenders() {
@@ -75,6 +111,16 @@ public class EFItems {
 		
 		// Fish
 		registerRender(fishTuna);
+		
+		// Tools
+		registerRender(saw);
+		registerRender(cuttingBoard);
+		registerRender(mixingBowl);
+		
+		// Parts
+		registerRender(sawHead);
+		registerRender(sawHandle);
+		registerRender(cutWood);
 	}
 	
 	public static void registerItem(Item item) {

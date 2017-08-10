@@ -13,7 +13,10 @@ import thepoptartcrpr.ef.EnhancedFood;
 import thepoptartcrpr.ef.Variables;
 import thepoptartcrpr.ef.blocks.EFBlock;
 import thepoptartcrpr.ef.blocks.crops.BlockCornCrop;
-import thepoptartcrpr.ef.blocks.machines.Oven;
+import thepoptartcrpr.ef.blocks.machines.BlockOven;
+import thepoptartcrpr.ef.blocks.machines.BlockTable;
+import thepoptartcrpr.ef.blocks.machines.BlockTableCuttingBoard;
+import thepoptartcrpr.ef.blocks.machines.BlockTableMixingBowl;
 
 public class EFBlocks {
 	
@@ -25,6 +28,9 @@ public class EFBlocks {
 	
 	// Machines
 	public static Block oven;
+	public static Block tableEmpty;
+	public static Block tableCuttingBoard;
+	public static Block tableMixingBowl;
 	
 	public static void init() {
 		// Ores
@@ -34,7 +40,10 @@ public class EFBlocks {
 		cornCrop = new BlockCornCrop("corn_crop");
 		
 		// Machines
-		oven = new Oven("oven");
+		oven = new BlockOven("oven");
+		tableEmpty = new BlockTable("table_empty", "table_empty", Material.WOOD, 1, 1);
+		tableCuttingBoard = new BlockTableCuttingBoard("table_cutting_board", "table_cutting_board", Material.WOOD, 1, 1);
+		tableMixingBowl = new BlockTableMixingBowl("table_mixing_bowl", "table_mixing_bowl", Material.WOOD, 1, 1);
 	}
 	
 	public static void register() {
@@ -46,6 +55,9 @@ public class EFBlocks {
 		
 		// Machines
 		registerBlock(oven, EnhancedFood.machines);
+		registerBlock(tableEmpty, EnhancedFood.machines);
+		registerBlock(tableCuttingBoard, EnhancedFood.machines);
+		registerBlock(tableMixingBowl, EnhancedFood.machines);
 	}
 	
 	public static void registerRenders() {
@@ -57,6 +69,9 @@ public class EFBlocks {
 		
 		// Machines
 		registerRender(oven);
+		registerRender(tableEmpty);
+		registerRender(tableCuttingBoard);
+		registerRender(tableMixingBowl);
 	}
 	
 	public static void registerBlock(Block block) {
