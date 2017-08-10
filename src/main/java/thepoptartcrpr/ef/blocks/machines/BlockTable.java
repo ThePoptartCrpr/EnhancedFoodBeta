@@ -49,9 +49,9 @@ public class BlockTable extends Block {
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if(!worldIn.isRemote && !playerIn.isSneaking()) {
-			ItemStack toolStack = new ItemStack(EFItems.cuttingBoard);
-			if (ItemStack.areItemStacksEqual(heldItem, toolStack)) {
-				// IBlockState newState = worldIn.getBlockState(pos);
+			ItemStack knifeStack = new ItemStack(EFItems.cuttingBoard);
+			ItemStack bowlStack = new ItemStack(EFItems.mixingBowl);
+			if (ItemStack.areItemStacksEqual(heldItem, knifeStack)) {
 				IBlockState newState = EFBlocks.tableCuttingBoard.getDefaultState();
 				worldIn.setBlockState(pos, newState);
 				ItemStack newStack = heldItem.copy();
@@ -59,11 +59,15 @@ public class BlockTable extends Block {
 				playerIn.setHeldItem(hand, newStack);
 				if (playerIn.getHeldItem(hand).stackSize <= 0)
 					playerIn.setHeldItem(hand, null);
-				// Utils.getConsole().info("knife");
-			} else {
-				// Utils.getConsole().info("no knife");
-				// Utils.getConsole().info(heldItem + " " + new ItemStack(EFTools.stainlessSteelKnife) + " " + ItemStack.areItemStacksEqual(heldItem, toolStack));
-				// playerIn.openGui(EnhancedFood.instance, GuiHandler.OVEN, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			} else 
+			if (ItemStack.areItemsEqual(heldItem, bowlStack)) {
+				IBlockState newState = EFBlocks.tableMixingBowl.getDefaultState();
+				worldIn.setBlockState(pos, newState);
+				ItemStack newStack = heldItem.copy();
+				--newStack.stackSize;
+				playerIn.setHeldItem(hand, newStack);
+				if (playerIn.getHeldItem(hand).stackSize <= 0)
+					playerIn.setHeldItem(hand, null);
 			}
 		}
 		return true;

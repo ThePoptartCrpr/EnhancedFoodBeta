@@ -21,6 +21,8 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(EFItems.sawHead), new Object[] { "III", "  I", 'I', Items.IRON_INGOT });
 		GameRegistry.addRecipe(new ItemStack(EFItems.saw), new Object[] { "AB", 'A', EFItems.sawHead, 'B', EFItems.sawHandle });
 		GameRegistry.addRecipe(new ItemStack(EFItems.cuttingBoard), new Object[] { "CCC", 'C', EFItems.cutWood });
+		GameRegistry.addRecipe(new ItemStack(EFItems.spoon), new Object[] { "  S", " S ", "W  ", 'S', Items.STICK, 'W', Blocks.PLANKS });
+		GameRegistry.addRecipe(new ItemStack(EFItems.mixingBowl), new Object [] { "ISI", " I ", 'I', Items.IRON_INGOT, 'S', EFItems.spoon });
 	}
 	
 	public static void registerSmeltingRecipes() {

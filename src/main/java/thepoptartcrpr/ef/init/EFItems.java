@@ -36,6 +36,7 @@ public class EFItems {
 	public static Item saw;
 	public static Item cuttingBoard;
 	public static Item mixingBowl;
+	public static Item spoon;
 	
 	// Parts
 	public static Item sawHead;
@@ -44,6 +45,7 @@ public class EFItems {
 	
 	
 	public static void init() {
+		
 		// Ingredients
 		salt = new EFItem("salt", "salt");
 		filletedTuna = new EFItem("filleted_tuna", "filleted_tuna");
@@ -62,6 +64,7 @@ public class EFItems {
 		saw = new EFGenericTool("saw", "saw");
 		cuttingBoard = new EFGenericTool("cutting_board", "cutting_board");
 		mixingBowl = new EFItem("mixing_bowl", "mixing_bowl");
+		spoon = new EFItem("spoon", "spoon");
 		
 		// Parts
 		sawHead = new EFItem("saw_head", "saw_head");
@@ -89,6 +92,7 @@ public class EFItems {
 		registerItem(saw, EnhancedFood.tools);
 		registerItem(cuttingBoard, EnhancedFood.tools);
 		registerItem(mixingBowl, EnhancedFood.tools);
+		registerItem(spoon, EnhancedFood.tools);
 		
 		// Parts
 		registerItem(sawHead, EnhancedFood.parts);
@@ -116,6 +120,7 @@ public class EFItems {
 		registerRender(saw);
 		registerRender(cuttingBoard);
 		registerRender(mixingBowl);
+		registerRender(spoon);
 		
 		// Parts
 		registerRender(sawHead);

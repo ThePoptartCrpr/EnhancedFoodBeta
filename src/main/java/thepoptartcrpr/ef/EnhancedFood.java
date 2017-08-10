@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import thepoptartcrpr.ef.blocks.EFFluid;
 import thepoptartcrpr.ef.creativetabs.TabEFCrops;
 import thepoptartcrpr.ef.creativetabs.TabEFIngredient;
 import thepoptartcrpr.ef.creativetabs.TabEFMachines;
@@ -48,6 +49,7 @@ public class EnhancedFood {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		EFFluid.init();
 		EFBlocks.init();
 		EFItems.init();
 		EFTools.init();

@@ -19,10 +19,10 @@ public class EFStainlessSteelKnife extends ItemSword {
 		this.setRegistryName(new ResourceLocation(Variables.MODID, unlocalizedName));
 	}
 	
-	@Override
+	/*@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
 		tooltip.add(TextFormatting.GRAY + Utils.getLang().localize("stainless_steel_knife.tooltip"));
-	}
+	}*/
 
 }

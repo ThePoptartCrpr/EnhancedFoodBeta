@@ -33,6 +33,12 @@ public class Utils {
 		return lang;
 	}
 	
+	public static boolean areItemsEqual(ItemStack stackOne, ItemStack stackTwo) {
+		stackOne.stackSize = 1;
+		stackTwo.stackSize = 1;
+		return ItemStack.areItemStacksEqual(stackOne, stackTwo);
+	}
+	
 	// public static int calculateRedstone(ItemStackHandler handler) {
 		// int i = 0;
 		// float f = 0.0F;

@@ -20,7 +20,8 @@ item.corn_seeds.name=Corn Seeds
 item.stainless_steel_knife.name=Knife
 item.saw.name=Saw
 item.cutting_board.name=Cutting Board
-item.mixingBowl.name=Mixing Bowl
+item.mixing_bowl.name=Mixing Bowl
+item.spoon.name=Wooden Spoon
 
 item.saw_handle.name=Saw Handle
 item.saw_head.name=Saw Head
